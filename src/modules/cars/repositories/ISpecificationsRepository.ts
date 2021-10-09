@@ -9,11 +9,9 @@ interface ISpecificationsRepository {
   createSpecification({
     name,
     description,
-  }: ICreateSpecificationsRepositoryDTO): void;
-
-  findByName(name: string): Specification;
-
-  getSpecification(): Specification[];
+  }: ICreateSpecificationsRepositoryDTO): Promise<void>;
+  findByName(name: string): Promise<Specification>;
+  getSpecification(): Promise<Specification[]>;
 }
 
 export { ICreateSpecificationsRepositoryDTO, ISpecificationsRepository };

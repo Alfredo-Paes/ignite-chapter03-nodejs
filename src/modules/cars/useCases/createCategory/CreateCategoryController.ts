@@ -1,4 +1,4 @@
-import { json, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { CreateCategoryUseCase } from './CreateCategoryUseCase';
 
@@ -9,7 +9,7 @@ class CreateCategoryController {
 
       const createCategoryUseCase = container.resolve(CreateCategoryUseCase);
 
-      const categoryCreated = await createCategoryUseCase.execute({
+      await createCategoryUseCase.execute({
         name,
         description,
       });
