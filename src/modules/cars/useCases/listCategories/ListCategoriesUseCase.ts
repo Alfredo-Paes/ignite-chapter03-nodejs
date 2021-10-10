@@ -17,6 +17,10 @@ class ListCategoriesUseCase {
   async execute(): Promise<Category[]> {
     const categories = await this.categoriesRepository.getCategory();
 
+    if (categories.length === 0) {
+      throw new Error('No categories found!');
+    }
+
     return categories;
   }
 }
