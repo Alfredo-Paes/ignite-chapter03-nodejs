@@ -18,6 +18,10 @@ class ListSpecificationsUseCase {
     const specifications =
       await this.specificationsRepository.getSpecification();
 
+    if (specifications.length === 0) {
+      throw new Error('No specifications found!');
+    }
+
     return specifications;
   }
 }
