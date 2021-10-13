@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe';
+import { AppError } from '../../../../errors/AppError';
 
 import { Specification } from '../../entities/Specification';
 import { ISpecificationsRepository } from '../../repositories/ISpecificationsRepository';
@@ -19,7 +20,7 @@ class ListSpecificationsUseCase {
       await this.specificationsRepository.getSpecification();
 
     if (specifications.length === 0) {
-      throw new Error('No specifications found!');
+      throw new AppError('No specifications found!', 404);
     }
 
     return specifications;
